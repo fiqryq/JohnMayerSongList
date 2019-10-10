@@ -10,6 +10,6 @@
         android:id="@+id/rv_songs"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/list_listview_song"/>
+        tools:listitem="@layout/item_row_song"/>
 
 </RelativeLayout>

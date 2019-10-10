@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -27,29 +28,24 @@ public class MainActivity extends AppCompatActivity {
         RecyclerList();
     }
 
-    private void RecyclerList() {
+    private void RecyclerList(){
         rvSongs.setLayoutManager(new LinearLayoutManager(this));
-        ListViewAdapter listViewAdapter = new ListViewAdapter(list);
-        rvSongs.setAdapter(listViewAdapter);
+        ListSongAdapter listSongAdapter = new ListSongAdapter(list,MainActivity.this);
+        rvSongs.setAdapter(listSongAdapter);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_toolbar, menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        setMode(item.getItemId());
+        Intent intent = new Intent(MainActivity.this,AboutmeActivity.class);
+        startActivity(intent);
         return super.onOptionsItemSelected(item);
     }
-
-    public void setMode(int selectionMode) {
-        switch (selectionMode) {
-            case R.id.menu_list_view:
-                RecyclerList();
-                break;
-        }
-    }
 }
+
